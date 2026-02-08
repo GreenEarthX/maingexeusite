@@ -5,53 +5,36 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Powering Sustainable
-                <span className="gradient-text block">Industrial Transformation</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                Green Earth X provides intelligent tools for certification-ready plant design and geographic monitoring, enabling industries to align with evolving sustainability standards.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-500 text-white text-base font-semibold rounded-full hover:bg-blue-600 transition-colors"
-                >
-                  Contact Us
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/solutions/certification-tool"
-                  className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-gray-700 text-base font-medium rounded-full hover:bg-gray-50 transition-colors"
-                >
-                  Explore Solutions
-                </Link>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              {/* Abstract sustainability visual placeholder */}
-              <div className="relative">
-                <div className="w-full aspect-square rounded-3xl gradient-bg border border-gray-100 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500/20 to-green-500/20 flex items-center justify-center">
-                      <svg className="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-400 text-sm">Sustainability Visualization</p>
-                  </div>
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-blue-500/10"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-xl bg-green-500/10"></div>
-              </div>
-            </div>
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80"
+            alt="Lush green forest"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.05] mb-6 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]">
+            Powering Sustainable
+            <span className="gradient-text block">Industrial Transformation</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white/80 mb-10 mx-auto max-w-2xl leading-relaxed">
+            Green Earth X provides intelligent tools for certification-ready plant design and geographic monitoring, enabling industries to align with evolving sustainability standards.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#00A63E] text-white text-base font-semibold rounded-full hover:bg-[#009032] transition-colors"
+            >
+              Contact Us
+            </Link>
+            <Link
+              href="/solutions/certification-tool"
+              className="inline-flex items-center justify-center px-8 py-4 border border-white/50 text-white text-base font-medium rounded-full hover:bg-white/10 transition-colors"
+            >
+              Explore Solutions
+            </Link>
           </div>
         </div>
       </section>
