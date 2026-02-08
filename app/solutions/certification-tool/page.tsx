@@ -8,28 +8,38 @@ export default function CertificationToolPage() {
       {/* Solution Overview Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <span className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-4 block">Solution</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Certification Tool & Plant Builder
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              A unified solution for designing sustainable plant configurations and navigating certification workflows.
-              Streamline your path to compliance with structured, expert-validated methodologies that align with
-              evolving industry standards.
-            </p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-4 block">Solution</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Certification Tool & Plant Builder
+              </h1>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                A unified solution to design, structure, and certify sustainable industrial plants with full
+                transparency and traceability. Streamline your path to compliance with structured, expert-validated
+                methodologies aligned to evolving industry standards.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-[#00A63E] text-white text-base font-semibold rounded-full hover:bg-[#009032] transition-colors"
+                >
+                  Request a Demo
+                </Link>
+              </div>
+            </div>
 
-          {/* Hero Screenshot - Certification Tool */}
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden shadow-lg">
-            <Image
-              src="/screenshots/certification_tool.png"
-              alt="Certification Tool Interface"
-              width={1920}
-              height={1080}
-              className="w-full h-auto"
-              priority
-            />
+            {/* Hero Screenshot - Certification Tool */}
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden shadow-lg">
+              <Image
+                src="/screenshots/certification_tool.png"
+                alt="Certification Tool Interface"
+                width={1920}
+                height={1080}
+                className="w-full h-auto max-h-[520px] object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -240,6 +250,69 @@ export default function CertificationToolPage() {
                 height={900}
                 className="w-full h-auto"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Plausibility Check Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1 rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-lg">
+              <Image
+                src="/screenshots/plausibility_screenshot.png"
+                alt="Plausibility Check Interface"
+                width={1200}
+                height={900}
+                className="w-full h-auto"
+              />
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <span className="text-green-600 font-medium text-sm uppercase tracking-wider mb-4 block">Plausibility Check</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Validate Documents with Confidence
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                A fast Python microservice that validates document consistency across PoS, PPA,
+                Term Sheet, and Invoice documents. It delivers compliance scores, verification
+                seals, and detailed pass/fail reports before NFT minting.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600">Validates data consistency across multiple documents</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600">Checks date ranges, party names, and quantities</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600">Generates compliance scores and verification seals</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600">Returns detailed pass/fail reports in under 500ms</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

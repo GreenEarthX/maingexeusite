@@ -82,28 +82,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Join Us Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Join Our Team
-          </h2>
-          <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals who share our passion for sustainability
-            and innovation. Get in touch to learn about opportunities.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center px-6 py-3 bg-blue-500 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors"
-          >
-            Contact Us
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <CTASection
         title="Ready to Work With Us?"
