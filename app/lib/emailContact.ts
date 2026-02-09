@@ -2,18 +2,29 @@ import { ConfidentialClientApplication } from "@azure/msal-node";
 import { Client } from "@microsoft/microsoft-graph-client";
 
 // --- MSAL CONFIG ---
-const msalConfig = {
-  auth: {
-    clientId: process.env.MICROSOFT_CLIENT_ID!,
-    authority: `https://login.microsoftonline.com/${process.env.MICROSOFT_TENANT_ID}`,
-    clientSecret: process.env.MICROSOFT_CLIENT_SECRET!,
-  },
-};
+function getCca() {
+  const clientId = process.env.MICROSOFT_CLIENT_ID;
+  const tenantId = process.env.MICROSOFT_TENANT_ID;
+  const clientSecret = process.env.MICROSOFT_CLIENT_SECRET;
 
-const cca = new ConfidentialClientApplication(msalConfig);
+  if (!clientId || !tenantId || !clientSecret) {
+    throw new Error("Missing Microsoft Graph credentials.");
+  }
+
+  const msalConfig = {
+    auth: {
+      clientId,
+      authority: `https://login.microsoftonline.com/${tenantId}`,
+      clientSecret,
+    },
+  };
+
+  return new ConfidentialClientApplication(msalConfig);
+}
 
 // --- TOKEN ACQUISITION ---
 async function getAccessToken(): Promise<string> {
+  const cca = getCca();
   const result = await cca.acquireTokenByClientCredential({
     scopes: ["https://graph.microsoft.com/.default"],
   });
