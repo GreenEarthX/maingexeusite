@@ -2,20 +2,51 @@
 
 import { useState } from 'react';
 
+type SubmitState = 'idle' | 'sending' | 'success' | 'error';
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+};
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     company: '',
     message: ''
   });
+  const [submitState, setSubmitState] = useState<SubmitState>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission - integrate with your backend
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message. We will get back to you soon.');
+    setSubmitState('sending');
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.error || 'Failed to send message.');
+      }
+
+      setSubmitState('success');
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } catch (error) {
+      setSubmitState('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message.');
+    }
   };
+
+  const isSending = submitState === 'sending';
 
   return (
     <>
@@ -75,7 +106,7 @@ export default function ContactPage() {
                     type="text"
                     id="name"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     placeholder="Your name"
                     required
@@ -90,7 +121,7 @@ export default function ContactPage() {
                     type="email"
                     id="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     placeholder="your@email.com"
                     required
@@ -105,7 +136,7 @@ export default function ContactPage() {
                     type="text"
                     id="company"
                     value={formData.company}
-                    onChange={(e) => setFormData({...formData, company: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     placeholder="Your company"
                   />
@@ -118,7 +149,7 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={4}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all resize-none"
                     placeholder="How can we help you?"
@@ -128,10 +159,27 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-blue-500 text-white font-medium rounded-xl hover:bg-blue-600 transition-colors"
+                  disabled={isSending}
+                  className={`w-full py-4 text-white font-medium rounded-xl transition-colors ${
+                    isSending
+                      ? 'bg-blue-400 cursor-not-allowed'
+                      : 'bg-blue-500 hover:bg-blue-600'
+                  }`}
                 >
-                  Send Message
+                  {isSending ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {submitState === 'success' && (
+                  <p className="text-sm text-green-600">
+                    Thanks for your message. We will get back to you soon.
+                  </p>
+                )}
+
+                {submitState === 'error' && (
+                  <p className="text-sm text-red-600">
+                    {errorMessage || 'Failed to send message.'}
+                  </p>
+                )}
               </form>
             </div>
           </div>
