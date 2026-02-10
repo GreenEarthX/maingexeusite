@@ -1,92 +1,85 @@
-import CTASection from '../components/CTASection';
+import path from "path";
+import { promises as fs } from "fs";
 
-// Team member data - can be updated with real team members
-const teamMembers = [
-  {
-    name: "Team Member",
-    role: "Chief Executive Officer",
-    description: "Leading company vision and strategic direction.",
-    initials: "TM"
-  },
-  {
-    name: "Team Member",
-    role: "Chief Technology Officer",
-    description: "Driving technical innovation and platform architecture.",
-    initials: "TM"
-  },
-  {
-    name: "Team Member",
-    role: "Head of Sustainability",
-    description: "Ensuring alignment with industry standards and best practices.",
-    initials: "TM"
-  },
-  {
-    name: "Team Member",
-    role: "Lead Product Designer",
-    description: "Crafting intuitive user experiences for complex workflows.",
-    initials: "TM"
-  },
-  {
-    name: "Team Member",
-    role: "Senior Engineer",
-    description: "Building robust and scalable platform infrastructure.",
-    initials: "TM"
-  },
-  {
-    name: "Team Member",
-    role: "Sustainability Analyst",
-    description: "Validating methodologies and certification workflows.",
-    initials: "TM"
+import TeamMemberCard from "./TeamMemberCard";
+import type { TeamMember } from "./types";
+
+const DATA_PATH = path.join(process.cwd(), "app", "team", "team.json");
+
+const getTeamMembers = async (): Promise<TeamMember[]> => {
+  try {
+    const file = await fs.readFile(DATA_PATH, "utf8");
+    const data = JSON.parse(file);
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
   }
-];
+};
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const teamMembers = await getTeamMembers();
+  const team = teamMembers.filter(
+    (member) => member.field_category === "Team"
+  );
+  const advisors = teamMembers.filter(
+    (member) => member.field_category === "Advisors"
+  );
+
   return (
-    <>
-      {/* Header Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-4 block">Our Team</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              The People Behind Green Earth X
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              A diverse team of experts in sustainability, technology, and design working together
-              to make industrial sustainability accessible and credible.
-            </p>
-          </div>
+    <div id="team" className="pt-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+        <div className="text-center p-20">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            Our Team
+          </h2>
+          <h3 className="pt-5 text-base text-gray-600 md:text-lg">
+            GreenEarthX was founded by seasoned entrepreneurs with extensive
+            experience in energy grids, telecom networks, cognitive artificial
+            intelligence, and trading and exchange platforms. <br />
+            <br /> We are passionate about the world we inhabit and leave behind.
+          </h3>
         </div>
-      </section>
 
-      {/* Team Grid Section */}
-      <section className="py-12 pb-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Avatar Placeholder */}
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center mb-5">
-                  <span className="text-2xl font-semibold text-gray-400">{member.initials}</span>
-                </div>
-
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-blue-500 text-sm font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.description}</p>
-              </div>
-            ))}
-          </div>
+        <div className="py-5 grid gap-8 md:grid-cols-3 lg:grid-cols-4">
+          {team.length > 0 ? (
+            team.map((member, index) => (
+              <TeamMemberCard
+                key={`${member.title ?? "member"}-${index}`}
+                member={member}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-gray-500">
+              Team profiles are being updated.
+            </div>
+          )}
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <CTASection
-        title="Ready to Work With Us?"
-        description="Connect with our team to explore partnership and collaboration opportunities."
-      />
-    </>
+        <div className="text-center p-20">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            Our Advisors
+          </h2>
+          <h3 className="pt-5 text-base text-gray-600 md:text-lg">
+            We are fortunate to have industry veterans with deep expertise
+            guiding us on how to make the greatest impact.
+          </h3>
+        </div>
+
+        <div className="py-5 grid gap-8 md:grid-cols-3 lg:grid-cols-4">
+          {advisors.length > 0 ? (
+            advisors.map((member, index) => (
+              <TeamMemberCard
+                key={`${member.title ?? "advisor"}-${index}`}
+                member={member}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-gray-500">
+              Advisor profiles are being updated.
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
