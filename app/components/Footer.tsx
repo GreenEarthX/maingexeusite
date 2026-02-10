@@ -67,10 +67,31 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-gray-400 text-sm text-center">
+        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col gap-4 items-center md:flex-row md:justify-between">
+          <p className="text-gray-400 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Green Earth X. All rights reserved.
           </p>
+          <div className="flex items-center gap-4 text-sm">
+            <span className="text-gray-400">Follow</span>
+            <a
+              href="https://x.com/GreenEarthXInc"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Green Earth X on X"
+            >
+              X
+            </a>
+            <a
+              href="https://www.linkedin.com/company/greenearthx/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Green Earth X on LinkedIn"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>
