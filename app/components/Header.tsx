@@ -78,26 +78,76 @@ export default function Header() {
               </button>
 
               {isSolutionsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 py-2">
+                <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-lg border border-gray-100 py-2">
+                  <Link
+                    href="/solutions"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions') ? 'bg-green-50/70' : ''}`}
+                    onClick={() => setIsSolutionsOpen(false)}
+                  >
+                    <div className={`font-medium text-sm ${isActive('/solutions') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      All Solutions
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">Platform overview</div>
+                  </Link>
+                  <Link
+                    href="/solutions/ecosystem-navigator-map"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/ecosystem-navigator-map') ? 'bg-green-50/70' : ''}`}
+                    onClick={() => setIsSolutionsOpen(false)}
+                  >
+                    <div className={`font-medium text-sm ${isActive('/solutions/ecosystem-navigator-map') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      Ecosystem Navigator Map
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">Geospatial ecosystem view</div>
+                  </Link>
+                  <Link
+                    href="/solutions/plant-builder"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/plant-builder') ? 'bg-green-50/70' : ''}`}
+                    onClick={() => setIsSolutionsOpen(false)}
+                  >
+                    <div className={`font-medium text-sm ${isActive('/solutions/plant-builder') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      Plant Builder
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">Structure project configuration</div>
+                  </Link>
+                  <Link
+                    href="/solutions/plausibility-check"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/plausibility-check') ? 'bg-green-50/70' : ''}`}
+                    onClick={() => setIsSolutionsOpen(false)}
+                  >
+                    <div className={`font-medium text-sm ${isActive('/solutions/plausibility-check') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      Plausibility Check
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">Consistency verification</div>
+                  </Link>
                   <Link
                     href="/solutions/certification-tool"
                     className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/certification-tool') ? 'bg-green-50/70' : ''}`}
                     onClick={() => setIsSolutionsOpen(false)}
                   >
                     <div className={`font-medium text-sm ${isActive('/solutions/certification-tool') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
-                      Certification Tool & Plant Builder
+                      Certification Tool
                     </div>
-                    <div className="text-gray-500 text-xs mt-0.5">Design and certify sustainable plants</div>
+                    <div className="text-gray-500 text-xs mt-0.5">Regulatory readiness</div>
                   </Link>
                   <Link
-                    href="/solutions/geomap"
-                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/geomap') ? 'bg-green-50/70' : ''}`}
+                    href="/solutions/marketplace"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/marketplace') ? 'bg-green-50/70' : ''}`}
                     onClick={() => setIsSolutionsOpen(false)}
                   >
-                    <div className={`font-medium text-sm ${isActive('/solutions/geomap') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
-                      GeoMap Tool
+                    <div className={`font-medium text-sm ${isActive('/solutions/marketplace') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      Marketplace
                     </div>
-                    <div className="text-gray-500 text-xs mt-0.5">Geographic intelligence & monitoring</div>
+                    <div className="text-gray-500 text-xs mt-0.5">Verified market access</div>
+                  </Link>
+                  <Link
+                    href="/solutions/market-intelligence"
+                    className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${isActive('/solutions/market-intelligence') ? 'bg-green-50/70' : ''}`}
+                    onClick={() => setIsSolutionsOpen(false)}
+                  >
+                    <div className={`font-medium text-sm ${isActive('/solutions/market-intelligence') ? 'text-[#00A63E]' : 'text-gray-900'}`}>
+                      GEX Market Intelligence
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">Ecosystem insights</div>
                   </Link>
                 </div>
               )}
@@ -143,11 +193,26 @@ export default function Header() {
               <Link href="/" className={navLinkClass(isActive('/'))}>
                 Home
               </Link>
-              <Link href="/solutions/certification-tool" className={navLinkClass(isActive('/solutions/certification-tool'))}>
-                Certification Tool & Plant Builder
+              <Link href="/solutions" className={navLinkClass(isActive('/solutions'))}>
+                All Solutions
               </Link>
-              <Link href="/solutions/geomap" className={navLinkClass(isActive('/solutions/geomap'))}>
-                GeoMap Tool
+              <Link href="/solutions/ecosystem-navigator-map" className={navLinkClass(isActive('/solutions/ecosystem-navigator-map'))}>
+                Ecosystem Navigator Map
+              </Link>
+              <Link href="/solutions/plant-builder" className={navLinkClass(isActive('/solutions/plant-builder'))}>
+                Plant Builder
+              </Link>
+              <Link href="/solutions/plausibility-check" className={navLinkClass(isActive('/solutions/plausibility-check'))}>
+                Plausibility Check
+              </Link>
+              <Link href="/solutions/certification-tool" className={navLinkClass(isActive('/solutions/certification-tool'))}>
+                Certification Tool
+              </Link>
+              <Link href="/solutions/marketplace" className={navLinkClass(isActive('/solutions/marketplace'))}>
+                Marketplace
+              </Link>
+              <Link href="/solutions/market-intelligence" className={navLinkClass(isActive('/solutions/market-intelligence'))}>
+                Market Intelligence
               </Link>
               <Link href="/about" className={navLinkClass(isActive('/about'))}>
                 About

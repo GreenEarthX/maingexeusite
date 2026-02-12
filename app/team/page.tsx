@@ -54,31 +54,6 @@ export default async function TeamPage() {
             </div>
           )}
         </div>
-
-        <div className="text-center p-20">
-          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-            Our Advisors
-          </h2>
-          <h3 className="pt-5 text-base text-gray-600 md:text-lg">
-            We are fortunate to have industry veterans with deep expertise
-            guiding us on how to make the greatest impact.
-          </h3>
-        </div>
-
-        <div className="py-5 grid gap-8 md:grid-cols-3 lg:grid-cols-4">
-          {advisors.length > 0 ? (
-            advisors.map((member, index) => (
-              <TeamMemberCard
-                key={`${member.title ?? "advisor"}-${index}`}
-                member={member}
-              />
-            ))
-          ) : (
-            <div className="col-span-full text-center text-gray-500">
-              Advisor profiles are being updated.
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
