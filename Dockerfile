@@ -3,18 +3,6 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Build arguments for environment variables
-ARG MICROSOFT_CLIENT_ID
-ARG MICROSOFT_CLIENT_SECRET
-ARG MICROSOFT_TENANT_ID
-ARG EMAIL_USER
-
-# Set as environment variables for the build process
-ENV MICROSOFT_CLIENT_ID=$MICROSOFT_CLIENT_ID
-ENV MICROSOFT_CLIENT_SECRET=$MICROSOFT_CLIENT_SECRET
-ENV MICROSOFT_TENANT_ID=$MICROSOFT_TENANT_ID
-ENV EMAIL_USER=$EMAIL_USER
-
 # Install dependencies
 COPY package*.json ./
 RUN npm ci
