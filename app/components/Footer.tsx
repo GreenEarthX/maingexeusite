@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-500 text-sm max-w-xs leading-relaxed">
-              Empowering sustainable industrial transformation through intelligent certification and geographic insights.
+              Empowering sustainable industrial transformation through structured project data, compliance readiness, and ecosystem intelligence.
             </p>
           </div>
 
@@ -27,18 +27,33 @@ export default function Footer() {
             <h4 className="font-medium text-gray-900 mb-4 text-sm">Solutions</h4>
             <ul className="space-y-3">
               <li>
+                <Link href="/solutions/ecosystem-navigator-map" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                  Ecosystem Navigator Map
+                </Link>
+              </li>
+              <li>
+                <Link href="/solutions/plant-builder" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                  Plant Builder
+                </Link>
+              </li>
+              <li>
+                <Link href="/solutions/plausibility-check" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                  Plausibility Check
+                </Link>
+              </li>
+              <li>
                 <Link href="/solutions/certification-tool" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
                   Certification Tool
                 </Link>
               </li>
               <li>
-                <Link href="/solutions/certification-tool" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
-                  Plant Builder
+                <Link href="/solutions/marketplace" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                  Marketplace
                 </Link>
               </li>
               <li>
-                <Link href="/solutions/geomap" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
-                  GeoMap Tool
+                <Link href="/solutions/market-intelligence" className="text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                  Market Intelligence
                 </Link>
               </li>
             </ul>
@@ -67,10 +82,31 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-gray-400 text-sm text-center">
+        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col gap-4 items-center md:flex-row md:justify-between">
+          <p className="text-gray-400 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Green Earth X. All rights reserved.
           </p>
+          <div className="flex items-center gap-4 text-sm">
+            <span className="text-gray-400">Follow</span>
+            <a
+              href="https://x.com/GreenEarthXInc"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Green Earth X on X"
+            >
+              X
+            </a>
+            <a
+              href="https://www.linkedin.com/company/greenearthx/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Green Earth X on LinkedIn"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>

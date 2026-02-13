@@ -60,6 +60,22 @@ html {
   animation: map-dash 8s linear infinite;
 }
 
+@keyframes text-shift {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-text {
+  animation: text-shift 5s ease infinite;
+}
+
 /* Card hover effects */
 .card-hover {
   transition: all 0.3s ease;
